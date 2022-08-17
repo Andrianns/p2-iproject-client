@@ -13,6 +13,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
+
     {
       path: '/standings-pl',
       name: 'standings',
@@ -27,16 +28,31 @@ const router = createRouter({
       path: '/myteam',
       name: 'myTeam',
       component: MyTeamPage,
+      beforeEnter() {
+        if (!localStorage.access_token) {
+          router.push({ name: 'login' });
+        }
+      },
     },
     {
       path: '/login',
       name: 'login',
       component: LoginPage,
+      beforeEnter() {
+        if (localStorage.access_token) {
+          router.push({ name: 'home' });
+        }
+      },
     },
     {
       path: '/register',
       name: 'register',
       component: RegisterPage,
+      beforeEnter() {
+        if (localStorage.access_token) {
+          router.push({ name: 'home' });
+        }
+      },
     },
   ],
 });

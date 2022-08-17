@@ -35,8 +35,8 @@
         </div>
       </div>
 
-      <div class="right bg-light">
-        <h5>Hello,</h5>
+      <div class="right bg-light" v-if="isLogin">
+        <h5>Hello, {{ username }}</h5>
 
         <div class="logout">
           <button class="btn btn-danger" @click.prevent="handleLogout">
@@ -53,6 +53,11 @@
 import { mapState, mapActions } from 'pinia';
 import { useCounterStore } from '../stores/counter';
 export default {
+  data() {
+    return {
+      username: localStorage.username,
+    };
+  },
   methods: {
     handleTopScore() {
       this.$router.push({ name: 'topScore' });
@@ -63,7 +68,14 @@ export default {
     handleLogout() {
       localStorage.clear();
       this.$router.push({ name: 'home' });
+      this.isLogin = false;
     },
+  },
+  computed: {
+    ...mapState(useCounterStore, ['isLogin']),
+  },
+  created() {
+    this.isLogin;
   },
 };
 </script>

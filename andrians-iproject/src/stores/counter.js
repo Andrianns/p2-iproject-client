@@ -17,6 +17,8 @@ export const useCounterStore = defineStore({
     },
     mainUrl: 'http://localhost:3000',
     teams: [],
+    favourite: [],
+    isLogin: false,
   }),
   // getters: {
   //   doubleCount: (state) => state.counter * 2,
@@ -51,12 +53,16 @@ export const useCounterStore = defineStore({
             password: this.stateLogin.password,
           },
         });
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('email', data.email);
+        localStorage.setItem('username', data.username);
+        this.isLogin = true;
+        router.push({ name: 'home' });
         Swal.fire({
           icon: 'success',
           title: 'Success',
           text: 'You are login',
         });
-        router.push({ name: 'home' });
       } catch (error) {
         Swal.fire({
           icon: 'error',
@@ -86,6 +92,26 @@ export const useCounterStore = defineStore({
         });
         router.push({ name: 'login' });
       } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.response.data.message,
+        });
+      }
+    },
+
+    async fetchFavouriteTeam() {
+      try {
+        const { data } = await axios({
+          method: 'get',
+          url: `${this.mainUrl}/teamsFavourite`,
+          headers: {
+            access_token: localStorage.access_token,
+          },
+        });
+        this.favourite = data.data;
+      } catch (error) {
+        console.log(error);
         Swal.fire({
           icon: 'error',
           title: 'Error',

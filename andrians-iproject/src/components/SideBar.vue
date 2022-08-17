@@ -32,7 +32,7 @@
               <span class="text-black">Teams</span>
             </a>
           </li>
-          <li class="sidebar-item">
+          <li class="sidebar-item" v-if="!isLogin">
             <a
               href=""
               class="sidebar-link"
@@ -48,7 +48,7 @@
               <span class="text-black">Login</span>
             </a>
           </li>
-          <li class="sidebar-item">
+          <li class="sidebar-item" v-if="isLogin">
             <a
               href=""
               class="sidebar-link hover-overlay"
@@ -71,6 +71,8 @@
 </template>
 
 <script>
+import { mapState } from 'pinia';
+import { useCounterStore } from '../stores/counter';
 export default {
   methods: {
     handleLogin() {
@@ -82,6 +84,10 @@ export default {
     handleTeam() {
       this.$router.push({ name: 'home' });
     },
+  },
+
+  computed: {
+    ...mapState(useCounterStore, ['isLogin']),
   },
 };
 </script>
