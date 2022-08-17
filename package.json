@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Andrianns/p2-iproject-client/issues"
   },
-  "homepage": "https://github.com/Andrianns/p2-iproject-client#readme"
+  "homepage": "https://github.com/Andrianns/p2-iproject-client#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "sweetalert2": "^11.4.28"
+  }
 }

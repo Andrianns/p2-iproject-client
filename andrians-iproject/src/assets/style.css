@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+.navbarr {
+  padding-left: 300px;
+}
+
+.right {
+  color: wheat;
+  display: flex;
+  padding: 10px 10px;
+  flex-direction: column;
+  background-color: #34495e;
+  width: auto;
+  border-radius: 10px;
+}
+.dashboard {
+  background-color: #34495e;
+  border-radius: 10px;
+  color: wheat;
+}
+#img {
+  margin: 0 auto;
+  width: 200px;
+  height: 160px;
+  object-fit: contain;
+}
+.card-img-top{
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.product-card{
+  display: flex;
+  padding-left: 320px;
+  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  
+  
+}
+#login {
+  height: 857px;
+  display: flex;
+  background-color: bisque;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+#register {
+  height: 857px;
+  display: flex;
+ 
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.dropdown{
+  padding-top: 40px;
+}
+.icon{
+  margin: 0px;
+  height: 30px;
+  width: 30px;
+}
+/* #addProduct {
+  height: 100vh;
+  display: flex;
+  background-color: bisque;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} */

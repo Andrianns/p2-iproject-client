@@ -1,1 +1,40 @@
-<template></template>
+<template>
+  <section
+    class="navbarr bg-light"
+    style="
+      background-image: url(https://img.freepik.com/free-photo/football-player-with-blue-uniform-front-lights_306105-813.jpg?w=1380&t=st=1660753582~exp=1660754182~hmac=3aeebb7bbc48340007fe860795a04dd1d3abaf22c0f9329de7f25a6271beb340);
+    "
+  >
+    <nav>
+      <div class="dashboard bg-light" style="padding: 35px 15px">
+        <h2>Miracle Of Football</h2>
+      </div>
+
+      <div class="dropdown">
+        <div class="dropdown-center">
+          <button
+            class="btn bg-light dropdown-toggle text-black"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Premier League
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="">Top Score</a></li>
+            <li><a class="dropdown-item" href="">Standings</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="right bg-light">
+        <h5>Hello,</h5>
+
+        <div class="logout">
+          <button class="btn btn-danger">logout</button>
+        </div>
+      </div>
+    </nav>
+    <hr style="margin: 0" />
+  </section>
+</template>
