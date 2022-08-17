@@ -21,8 +21,16 @@
             Premier League
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="">Top Score</a></li>
-            <li><a class="dropdown-item" href="">Standings</a></li>
+            <li>
+              <a class="dropdown-item" href="" @click.prevent="handleTopScore"
+                >Top Score</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="" @click.prevent="handleStandings"
+                >Standings</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -31,10 +39,31 @@
         <h5>Hello,</h5>
 
         <div class="logout">
-          <button class="btn btn-danger">logout</button>
+          <button class="btn btn-danger" @click.prevent="handleLogout">
+            logout
+          </button>
         </div>
       </div>
     </nav>
     <hr style="margin: 0" />
   </section>
 </template>
+
+<script>
+import { mapState, mapActions } from 'pinia';
+import { useCounterStore } from '../stores/counter';
+export default {
+  methods: {
+    handleTopScore() {
+      this.$router.push({ name: 'topScore' });
+    },
+    handleStandings() {
+      this.$router.push({ name: 'standings' });
+    },
+    handleLogout() {
+      localStorage.clear();
+      this.$router.push({ name: 'home' });
+    },
+  },
+};
+</script>

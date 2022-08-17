@@ -21,6 +21,7 @@
               href=""
               class="sidebar-link hover-overlay"
               style="background: #d2dae2"
+              @click.prevent="handleTeam"
             >
               <i class="icon"
                 ><img
@@ -32,7 +33,12 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a href="" class="sidebar-link" style="background: #d2dae2">
+            <a
+              href=""
+              class="sidebar-link"
+              style="background: #d2dae2"
+              @click.prevent="handleLogin"
+            >
               <i
                 ><img
                   class="icon"
@@ -47,6 +53,7 @@
               href=""
               class="sidebar-link hover-overlay"
               style="background: #d2dae2"
+              @click.prevent="handleMyTeam"
             >
               <i class="icon"
                 ><img
@@ -63,4 +70,18 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  methods: {
+    handleLogin() {
+      this.$router.push({ name: 'login' });
+    },
+    handleMyTeam() {
+      this.$router.push({ name: 'myTeam' });
+    },
+    handleTeam() {
+      this.$router.push({ name: 'home' });
+    },
+  },
+};
+</script>

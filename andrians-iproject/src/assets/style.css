@@ -50,7 +50,7 @@ nav {
 #login {
   height: 857px;
   display: flex;
-  background-color: bisque;
+  background-color: #d2dae2;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
@@ -58,7 +58,7 @@ nav {
 #register {
   height: 857px;
   display: flex;
- 
+  background-color: #d2dae2;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;

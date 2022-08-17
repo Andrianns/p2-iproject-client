@@ -2,8 +2,6 @@
   <NavBar />
   <SideBar />
   <TeamsCard :teams="teams" />
-
-  <h1>TEST</h1>
 </template>
 <script>
 import NavBar from '../components/NavBar.vue';
