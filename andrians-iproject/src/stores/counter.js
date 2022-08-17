@@ -18,6 +18,7 @@ export const useCounterStore = defineStore({
     mainUrl: 'http://localhost:3000',
     teams: [],
     favourite: [],
+    topScore: [],
     isLogin: false,
   }),
   // getters: {
@@ -110,6 +111,23 @@ export const useCounterStore = defineStore({
           },
         });
         this.favourite = data.data;
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.response.data.message,
+        });
+      }
+    },
+
+    async fetchTopScore() {
+      try {
+        const { data } = await axios({
+          method: 'get',
+          url: `${this.mainUrl}/top-score-PL`,
+        });
+        this.topScore = data.data;
       } catch (error) {
         console.log(error);
         Swal.fire({

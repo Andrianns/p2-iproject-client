@@ -43,9 +43,6 @@ nav {
   gap: 20px;
   flex-direction: row;
   flex-wrap: wrap;
-  
-  
-  
 }
 #login {
   height: 857px;
@@ -76,6 +73,21 @@ nav {
   height: 30px;
   width: 30px;
 }
+
+.imgTable{
+  margin: 0 auto;
+  width: 200px;
+  height: 160px;
+  object-fit: contain;
+}
+.table-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 15vw;
+  padding-top: 40px;
+}
+
 /* #addProduct {
   height: 100vh;
   display: flex;

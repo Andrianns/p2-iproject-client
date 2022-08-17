@@ -1,2 +1,40 @@
-<template></template>
-<script></script>
+<template>
+  <section>
+    <div class="col-lg-6-border table-list">
+      <div class="container">
+        <h2>Premier League 2022-2023</h2>
+
+        <div class="card">
+          <h2 style="padding: 10px 15px 0px 15px">Standings</h2>
+          <div class="text-center">
+            <table class="table table-success table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Nationality</th>
+                  <th>Goals</th>
+                  <th>Team</th>
+                  <th>Club</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <tr>
+                  <td>name</td>
+                  <td>Position</td>
+                  <td>Nationality</td>
+                  <td>Goals</td>
+                  <td>Team</td>
+                  <td>Club</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+<script>
+export default {};
+</script>

@@ -20,7 +20,7 @@ export default {
     ...mapActions(useCounterStore, ['fetchFavouriteTeam']),
   },
   computed: {
-    ...mapState(useCounterStore, ['isLogin', 'favourite']),
+    ...mapState(useCounterStore, ['favourite']),
   },
 
   created() {
