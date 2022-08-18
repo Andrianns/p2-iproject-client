@@ -19,6 +19,8 @@ export const useCounterStore = defineStore({
     teams: [],
     favourite: [],
     topScore: [],
+    standingsClub: [],
+    teamDetail: {},
     isLogin: false,
   }),
   // getters: {
@@ -130,6 +132,98 @@ export const useCounterStore = defineStore({
         this.topScore = data.data;
       } catch (error) {
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.response.data.message,
+        });
+      }
+    },
+    async fetchStandings() {
+      try {
+        const { data } = await axios({
+          method: 'get',
+          url: `${this.mainUrl}/standings-PL`,
+        });
+        this.standings = data.data;
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.response.data.message,
+        });
+      }
+    },
+
+    async chooseTeam(id) {
+      try {
+        const { data } = await axios({
+          method: 'post',
+          url: `${this.mainUrl}/teamsFavourite/${id}`,
+          headers: {
+            access_token: localStorage.access_token,
+          },
+        });
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, choose it!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Choosed!', 'You just selected this team ', 'success');
+            router.push({ name: 'myTeam' });
+          } else {
+            router.push({ name: 'home' });
+          }
+        });
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.response.data.message,
+        });
+      }
+    },
+
+    async sendMail(id) {
+      try {
+        const { data } = await axios({
+          method: 'get',
+          url: `${this.mainUrl}/sendMail/${id}`,
+          headers: {
+            access_token: localStorage.access_token,
+          },
+        });
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: `We're send email to you, check your inbox!`,
+        });
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.response.data.message,
+        });
+      }
+    },
+
+    async detailTeam(id) {
+      try {
+        const { data } = await axios({
+          method: 'get',
+          url: `${this.mainUrl}/teams/${id}`,
+        });
+        this.teamDetail = data.teams;
+      } catch (error) {
         Swal.fire({
           icon: 'error',
           title: 'Error',

@@ -10,22 +10,30 @@
             <table class="table table-success table-striped">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Nationality</th>
-                  <th>Goals</th>
-                  <th>Team</th>
                   <th>Club</th>
+                  <th>Team</th>
+                  <th>Position</th>
+                  <th>Played Games</th>
+                  <th>Win</th>
+                  <th>Draw</th>
+                  <th>Lost</th>
+                  <th>Former</th>
                 </tr>
               </thead>
-              <tbody id="tableBody">
+              <tbody
+                id="tableBody"
+                v-for="(standings, index) in stands"
+                :key="standings.id"
+              >
                 <tr>
-                  <td>name</td>
-                  <td>Position</td>
-                  <td>Nationality</td>
-                  <td>Goals</td>
-                  <td>Team</td>
-                  <td>Club</td>
+                  <td><img :src="standings.logo" alt="" class="imgTable" /></td>
+                  <td>{{ standings.team }}</td>
+                  <td>{{ standings.position }}</td>
+                  <td>{{ standings.playedGames }}</td>
+                  <td>{{ standings.won }}</td>
+                  <td>{{ standings.draw }}</td>
+                  <td>{{ standings.lost }}</td>
+                  <td>{{ standings.form }}</td>
                 </tr>
               </tbody>
             </table>
@@ -36,5 +44,7 @@
   </section>
 </template>
 <script>
-export default {};
+export default {
+  props: ['stands'],
+};
 </script>

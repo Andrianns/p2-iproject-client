@@ -1,29 +1,29 @@
 <template>
-  <NavBar />
   <SideBar />
-  <TableStandings :stands="standings" />
+  <DetailTeam :detailTeam="teamDetail" />
 </template>
+
 <script>
 import NavBar from '../components/NavBar.vue';
 import SideBar from '../components/SideBar.vue';
-import TableStandings from '../components/TableStandings.vue';
+import DetailTeam from '../components/DetailTeam.vue';
 import { mapState, mapActions } from 'pinia';
 import { useCounterStore } from '../stores/counter';
-
 export default {
   components: {
     NavBar,
     SideBar,
-    TableStandings,
+    DetailTeam,
   },
+
   methods: {
-    ...mapActions(useCounterStore, ['fetchStandings']),
+    ...mapActions(useCounterStore, ['detailTeam']),
   },
   computed: {
-    ...mapState(useCounterStore, ['standings']),
+    ...mapState(useCounterStore, ['teamDetail']),
   },
   created() {
-    this.fetchStandings();
+    this.detailTeam(this.$route.params.id);
   },
 };
 </script>

@@ -35,11 +35,11 @@
         </div>
       </div>
 
-      <div class="right bg-light" v-if="isLogin">
+      <div class="right bg-light" v-if="this.access_token">
         <h5>Hello, {{ username }}</h5>
 
         <div class="logout">
-          <button class="btn btn-danger" @click.prevent="handleLogout">
+          <button class="btn btn-danger" @click.once="handleLogout">
             logout
           </button>
         </div>
@@ -50,12 +50,14 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia';
+import { mapWritableState, mapActions } from 'pinia';
+import router from '../router';
 import { useCounterStore } from '../stores/counter';
 export default {
   data() {
     return {
       username: localStorage.username,
+      access_token: localStorage.access_token,
     };
   },
   methods: {
@@ -66,13 +68,13 @@ export default {
       this.$router.push({ name: 'standings' });
     },
     handleLogout() {
+      router.push({ name: 'login' });
       localStorage.clear();
-      this.$router.push({ name: 'home' });
       this.isLogin = false;
     },
   },
   computed: {
-    ...mapState(useCounterStore, ['isLogin']),
+    ...mapWritableState(useCounterStore, ['isLogin']),
   },
   created() {
     this.isLogin;

@@ -11,9 +11,15 @@
             <br />
             <br />
             <div>
-              <button class="btn-primary rounded text-black">Detail</button>
-
-              <button class="btn-primary rounded text-black">
+              <router-link
+                :to="{ name: 'detailTeam', params: { id: team.id } }"
+              >
+                <button class="btn-primary rounded text-black">Detail</button>
+              </router-link>
+              <button
+                class="btn-primary rounded text-black"
+                @click.prevent="handleChoose(team.id)"
+              >
                 Choose Team
               </button>
             </div>
@@ -25,7 +31,26 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'pinia';
+import router from '../router';
+import { useCounterStore } from '../stores/counter';
+import Swal from 'sweetalert2';
 export default {
   props: ['teams'],
+  methods: {
+    ...mapActions(useCounterStore, ['chooseTeam']),
+    handleChoose(id) {
+      if (!localStorage.access_token) {
+        router.push({ name: 'login' });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You need login first',
+        });
+      } else {
+        this.chooseTeam(id);
+      }
+    },
+  },
 };
 </script>

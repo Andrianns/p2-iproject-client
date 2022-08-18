@@ -32,7 +32,7 @@
               <span class="text-black">Teams</span>
             </a>
           </li>
-          <li class="sidebar-item" v-if="!isLogin">
+          <li class="sidebar-item" v-if="!this.access_token">
             <a
               href=""
               class="sidebar-link"
@@ -48,7 +48,7 @@
               <span class="text-black">Login</span>
             </a>
           </li>
-          <li class="sidebar-item" v-if="isLogin">
+          <li class="sidebar-item" v-if="this.access_token">
             <a
               href=""
               class="sidebar-link hover-overlay"
@@ -74,6 +74,11 @@
 import { mapState } from 'pinia';
 import { useCounterStore } from '../stores/counter';
 export default {
+  data() {
+    return {
+      access_token: localStorage.access_token,
+    };
+  },
   methods: {
     handleLogin() {
       this.$router.push({ name: 'login' });

@@ -17,7 +17,12 @@
             <br />
             <br />
             <div>
-              <button class="btn-primary rounded text-black">Notif Me!</button>
+              <button
+                class="btn-primary rounded text-black"
+                @click.prevent="handlerNotif(favo.id)"
+              >
+                Notif Me!
+              </button>
             </div>
           </div>
         </div>
@@ -27,7 +32,15 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia';
+import { useCounterStore } from '../stores/counter';
 export default {
   props: ['fav'],
+  methods: {
+    ...mapActions(useCounterStore, ['sendMail']),
+    handlerNotif(id) {
+      this.sendMail(id);
+    },
+  },
 };
 </script>
