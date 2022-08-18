@@ -6,6 +6,7 @@ import MyTeamPage from '../views/MyTeamPage.vue';
 import LoginPage from '../views/LoginPage.vue';
 import RegisterPage from '../views/RegisterPage.vue';
 import DetailTeam from '../views/DetailTeam.vue';
+import ErrorPage from '../views/ErrorPage.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -60,6 +61,7 @@ const router = createRouter({
       name: 'detailTeam',
       component: DetailTeam,
     },
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: ErrorPage },
   ],
 });
 
