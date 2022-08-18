@@ -236,7 +236,7 @@ export const useCounterStore = defineStore({
       try {
         const { data } = await axios({
           method: 'post',
-          url: `${this.mainUrl}/user/google-signinn`,
+          url: `${this.mainUrl}/user/google-signin`,
           headers: {
             token_google: response.credential,
           },
@@ -244,7 +244,7 @@ export const useCounterStore = defineStore({
         console.log(data);
         localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('email', data.email);
-        // localStorage.setItem('username', data.username);
+        localStorage.setItem('username', data.username);
         router.push({ name: 'home' });
         // this.fetchProduct();
       } catch (error) {
