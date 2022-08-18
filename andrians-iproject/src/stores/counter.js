@@ -15,7 +15,7 @@ export const useCounterStore = defineStore({
       email: '',
       password: '',
     },
-    mainUrl: 'http://localhost:3000',
+    mainUrl: 'https://miracle-football.herokuapp.com',
     teams: [],
     favourite: [],
     topScore: [],
@@ -224,6 +224,31 @@ export const useCounterStore = defineStore({
         });
         this.teamDetail = data.teams;
       } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.response.data.message,
+        });
+      }
+    },
+
+    async handleCredentialResponse(response) {
+      try {
+        const { data } = await axios({
+          method: 'post',
+          url: `${this.mainUrl}/user/google-signinn`,
+          headers: {
+            token_google: response.credential,
+          },
+        });
+        console.log(data);
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('email', data.email);
+        // localStorage.setItem('username', data.username);
+        router.push({ name: 'home' });
+        // this.fetchProduct();
+      } catch (error) {
+        console.log(error);
         Swal.fire({
           icon: 'error',
           title: 'Error',

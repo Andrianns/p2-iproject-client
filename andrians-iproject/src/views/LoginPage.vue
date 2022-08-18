@@ -82,13 +82,28 @@ export default {
     };
   },
   methods: {
-    ...mapActions(useCounterStore, ['login']),
+    ...mapActions(useCounterStore, ['login', 'handleCredentialResponse']),
     handleLogin() {
       this.login(this.loginForm);
     },
     hanldeRegister() {
       this.$router.push('register');
     },
+  },
+  mounted() {
+    const cb = this.handleCredentialResponse;
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id:
+          '740813234781-3912m8lu6epnos2kvi6tc0rh56vbb7ma.apps.googleusercontent.com',
+        callback: cb,
+      });
+      google.accounts.id.renderButton(
+        document.getElementById('buttonDiv'),
+        { theme: 'outline', size: 'large' } // customization attributes
+      );
+      // google.accounts.id.prompt(); // also display the One Tap dialog
+    };
   },
 };
 </script>
