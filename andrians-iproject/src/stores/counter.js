@@ -15,7 +15,7 @@ export const useCounterStore = defineStore({
       email: '',
       password: '',
     },
-    mainUrl: 'https://miracle-football.herokuapp.com',
+    mainUrl: 'https://web-production-676df.up.railway.app',
     teams: [],
     favourite: [],
     topScore: [],
