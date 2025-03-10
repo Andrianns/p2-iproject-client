@@ -15,7 +15,7 @@ export const useCounterStore = defineStore({
       email: '',
       password: '',
     },
-    mainUrl: 'https://web-production-676df.up.railway.app',
+    mainUrl: 'https://p2-iproject-server.vercel.app',
     teams: [],
     favourite: [],
     topScore: [],
